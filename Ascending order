@@ -1,0 +1,21 @@
+ORG 0000H
+	MOV 30H,#05
+	MOV 31H,#06
+	MOV 32H,#09
+	MOV 33H,#03
+	MOV R7,#04H
+	MAIN: MOV R0,#30H
+	      MOV R6,#04H
+    UP: MOV A,@R0
+	    INC R0
+		MOV B,@R0
+		CJNE A,B,NEXT
+	NEXT: JC NO
+	      MOV @R0,A
+		  DEC R0
+		  MOV @R0,B
+		  INC R0
+	NO: DJNZ R6,UP
+	    DJNZ R7,MAIN
+		
+	END
